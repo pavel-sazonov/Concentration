@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count / 2))
     
     var emojiChoices = ["👻", "🎃", "😱", "👽", "💀", "🧟‍♀️", "🐲", "👹", "🤡"]
+    var removedEmojies = [String]()
     var emoji = [Int: String]()
     
     var flipCount = 0 {
@@ -29,6 +30,11 @@ class ViewController: UIViewController {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
         }
+    }
+    
+    @IBAction func startNewGame() {
+        flipCount = 0
+        newGame()
     }
     
     func updateViewFromModel() {
@@ -49,9 +55,24 @@ class ViewController: UIViewController {
     func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            let removedEmoji = emojiChoices.remove(at: randomIndex)
+            emoji[card.identifier] = removedEmoji
+            removedEmojies.append(removedEmoji)
         }
         return emoji[card.identifier] ?? "?"
+    }
+    
+    func newGame() {
+        for index in cardButtons.indices {
+            game.cards[index].isFaceUp = false
+            game.cards[index].isMatched = false
+            cardButtons[index].setTitle("", for: UIControl.State.normal)
+            cardButtons[index].backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        }
+        
+        emoji = [:]
+        emojiChoices += removedEmojies
+        removedEmojies = []
     }
 }
 
