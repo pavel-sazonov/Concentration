@@ -9,7 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var emojiChoices = ["👻", "🎃", "👻", "🎃"]
+    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count / 2))
+    
+    var emojiChoices = ["👻", "🎃", "😱", "👽", "💀", "🧟‍♀️", "🐲", "👹", "🤡"]
+    var removedEmojies = [String]()
+    var emoji = [Int: String]()
     
     var flipCount = 0 {
         didSet {
@@ -18,23 +22,57 @@ class ViewController: UIViewController {
     }
 
     @IBOutlet weak var flipCountLabel: UILabel!
-    @IBOutlet var cardNumbers: [UIButton]!
+    @IBOutlet var cardButtons: [UIButton]!
     
     @IBAction func touchCard(_ sender: UIButton) {
-        if let cardNumber = cardNumbers.index(of: sender) {
-            flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
-            flipCount += 1
+        flipCount += 1
+        if let cardNumber = cardButtons.index(of: sender) {
+            game.chooseCard(at: cardNumber)
+            updateViewFromModel()
         }
     }
     
-    func flipCard(withEmoji emoji: String, on button: UIButton) {
-        if button.currentTitle == emoji {
-            button.setTitle("", for: UIControl.State.normal)
-            button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-        } else {
-            button.setTitle(emoji, for: UIControl.State.normal)
-            button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    @IBAction func startNewGame() {
+        flipCount = 0
+        newGame()
+    }
+    
+    func updateViewFromModel() {
+        for index in cardButtons.indices {
+            let button = cardButtons[index]
+            let card = game.cards[index]
+            
+            if card.isFaceUp {
+                button.setTitle(emoji(for: card), for: UIControl.State.normal)
+                button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            } else {
+                button.setTitle("", for: UIControl.State.normal)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            }
         }
+    }
+    
+    func emoji(for card: Card) -> String {
+        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+            let removedEmoji = emojiChoices.remove(at: randomIndex)
+            emoji[card.identifier] = removedEmoji
+            removedEmojies.append(removedEmoji)
+        }
+        return emoji[card.identifier] ?? "?"
+    }
+    
+    func newGame() {
+        for index in cardButtons.indices {
+            game.cards[index].isFaceUp = false
+            game.cards[index].isMatched = false
+            cardButtons[index].setTitle("", for: UIControl.State.normal)
+            cardButtons[index].backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        }
+        
+        emoji = [:]
+        emojiChoices += removedEmojies
+        removedEmojies = []
     }
 }
 

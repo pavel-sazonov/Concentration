@@ -12,6 +12,8 @@
 		1812B6DB221707A8003FAF8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1812B6D9221707A8003FAF8D /* Main.storyboard */; };
 		1812B6DD221707AC003FAF8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1812B6DC221707AC003FAF8D /* Assets.xcassets */; };
 		1812B6E0221707AC003FAF8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1812B6DE221707AC003FAF8D /* LaunchScreen.storyboard */; };
+		1812B6EB22194CB9003FAF8D /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B6EA22194CB9003FAF8D /* Concentration.swift */; };
+		1812B6ED22194DBA003FAF8D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B6EC22194DBA003FAF8D /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		1812B6DC221707AC003FAF8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1812B6DF221707AC003FAF8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1812B6E1221707AC003FAF8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1812B6EA22194CB9003FAF8D /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		1812B6EC22194DBA003FAF8D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		1812B6D4221707A8003FAF8D /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
+				1812B6EA22194CB9003FAF8D /* Concentration.swift */,
+				1812B6EC22194DBA003FAF8D /* Card.swift */,
 				1812B6D7221707A8003FAF8D /* ViewController.swift */,
 				1812B6D9221707A8003FAF8D /* Main.storyboard */,
 				1812B6E1221707AC003FAF8D /* Info.plist */,
@@ -145,6 +151,8 @@
 			files = (
 				1812B6D8221707A8003FAF8D /* ViewController.swift in Sources */,
 				1812B6D6221707A8003FAF8D /* AppDelegate.swift in Sources */,
+				1812B6EB22194CB9003FAF8D /* Concentration.swift in Sources */,
+				1812B6ED22194DBA003FAF8D /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
