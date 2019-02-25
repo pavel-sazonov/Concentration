@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     }
     
     private var emojiChoices = "👻🎃😱👽💀🧟‍♀️🐲👹🤡😸"
-    private var removedEmojies = ""
     private var emoji = [Card: String]()
     
     private (set) var flipCount = 0 {
@@ -39,14 +38,9 @@ class ViewController: UIViewController {
     
     @IBAction private func startNewGame() {
         flipCount = 0
+        
         game.newGame()
-        for index in cardButtons.indices {
-            cardButtons[index].setTitle("", for: UIControl.State.normal)
-            cardButtons[index].backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-        }
-        emoji = [:]
-        emojiChoices += removedEmojies
-        removedEmojies = ""
+        updateViewFromModel()
     }
     
     private func updateFlipCountLabel() {
@@ -77,9 +71,7 @@ class ViewController: UIViewController {
     private func emoji(for card: Card) -> String {
         if emoji[card] == nil, emojiChoices.count > 0 {
             let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4Random)
-            let removedEmoji = String(emojiChoices.remove(at: randomStringIndex))
-            emoji[card] = removedEmoji
-            removedEmojies.append(removedEmoji)
+            emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
         }
         return emoji[card] ?? "?"
     }

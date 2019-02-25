@@ -43,6 +43,7 @@ struct Concentration {
             cards[index].isFaceUp = false
             cards[index].isMatched = false
         }
+        cards.shuffle()
     }
     
     init(numberOfPairsOfCards: Int) {
