@@ -15,7 +15,17 @@ class ViewController: UIViewController {
         return cardButtons.count / 2
     }
     
-    private var emojiChoices = "👻🎃😱👽💀🧟‍♀️🐲👹🤡😸"
+    private var emojiThemes = [
+        "👻🎃😱👽💀🧟‍♀️🐲👹🤡☠️",
+        "😸🐶🐰🦊🐷🐥🐼🦋🐭🐠",
+        "🍏🍐🍊🍋🍌🍉🍇🍓🍒🍑",
+        "1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟",
+        "АБВГДЕЖЗИКЛМНОПРСТУФХЦШЩЬЪЭЮЯ",
+        "😹😻😼😽🙀😿😾🐱😸😺"
+    ]
+    
+    lazy private var emojiChoices: String! = emojiThemes.randomElement()
+    
     private var emoji = [Card: String]()
     
     private (set) var flipCount = 0 {
@@ -38,8 +48,9 @@ class ViewController: UIViewController {
     
     @IBAction private func startNewGame() {
         flipCount = 0
-        
         game.newGame()
+        emojiChoices = emojiThemes.randomElement()
+        emoji = [:]
         updateViewFromModel()
     }
     
