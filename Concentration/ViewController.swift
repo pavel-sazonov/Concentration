@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         return cardButtons.count / 2
     }
     
-    private var emojiChoices = "👻🎃😱👽💀🧟‍♀️🐲👹🤡"
+    private var emojiChoices = "👻🎃😱👽💀🧟‍♀️🐲👹🤡😸"
     private var removedEmojies = ""
     private var emoji = [Card: String]()
     
