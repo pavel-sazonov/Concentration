@@ -10,6 +10,7 @@ import Foundation
 
 struct Concentration {
     private (set) var cards = [Card]()
+    private (set) var score = 0
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
@@ -30,6 +31,18 @@ struct Concentration {
                 if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
+                    score += 2
+                } else {
+                    if cards[index].isTouched {
+                        score -= 1
+                    } else {
+                        cards[index].isTouched.toggle()
+                    }
+                    if cards[matchIndex].isTouched {
+                        score -= 1
+                    } else {
+                        cards[matchIndex].isTouched.toggle()
+                    }
                 }
                 cards[index].isFaceUp = true
             } else {
@@ -42,6 +55,8 @@ struct Concentration {
         for index in cards.indices {
             cards[index].isFaceUp = false
             cards[index].isMatched = false
+            cards[index].isTouched = false
+            score = 0
         }
         cards.shuffle()
     }
