@@ -36,6 +36,8 @@ class ViewController: UIViewController {
          didSet { updateFlipCountLabel() }
     }
     
+    @IBOutlet private weak var scoreLabel: UILabel!
+    
     @IBOutlet private var cardButtons: [UIButton]!
     
     @IBAction private func touchCard(_ sender: UIButton) {
