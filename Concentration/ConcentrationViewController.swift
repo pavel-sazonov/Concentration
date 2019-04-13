@@ -15,7 +15,7 @@ class ConcentrationViewController: UIViewController {
         return cardButtons.count / 2
     }
     
-    private var emojiChoices = ""
+    private var emojiChoices = "👻🎃😱👽💀🧟‍♀️🐲👹🤡☠️"
     
     var theme: String? {
         didSet {
