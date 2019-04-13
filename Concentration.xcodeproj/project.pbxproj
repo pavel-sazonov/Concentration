@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1812B6D6221707A8003FAF8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B6D5221707A8003FAF8D /* AppDelegate.swift */; };
-		1812B6D8221707A8003FAF8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B6D7221707A8003FAF8D /* ViewController.swift */; };
+		1812B6D8221707A8003FAF8D /* ConcentrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B6D7221707A8003FAF8D /* ConcentrationViewController.swift */; };
 		1812B6DB221707A8003FAF8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1812B6D9221707A8003FAF8D /* Main.storyboard */; };
 		1812B6DD221707AC003FAF8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1812B6DC221707AC003FAF8D /* Assets.xcassets */; };
 		1812B6E0221707AC003FAF8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1812B6DE221707AC003FAF8D /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 /* Begin PBXFileReference section */
 		1812B6D2221707A8003FAF8D /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1812B6D5221707A8003FAF8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1812B6D7221707A8003FAF8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1812B6D7221707A8003FAF8D /* ConcentrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationViewController.swift; sourceTree = "<group>"; };
 		1812B6DA221707A8003FAF8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1812B6DC221707AC003FAF8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1812B6DF221707AC003FAF8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 			children = (
 				1812B6EA22194CB9003FAF8D /* Concentration.swift */,
 				1812B6EC22194DBA003FAF8D /* Card.swift */,
-				1812B6D7221707A8003FAF8D /* ViewController.swift */,
+				1812B6D7221707A8003FAF8D /* ConcentrationViewController.swift */,
 				1812B6D9221707A8003FAF8D /* Main.storyboard */,
 				1812B6E1221707AC003FAF8D /* Info.plist */,
 				1812B6E722170DF2003FAF8D /* Supporting Files */,
@@ -110,6 +110,7 @@
 				TargetAttributes = {
 					1812B6D1221707A8003FAF8D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -149,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1812B6D8221707A8003FAF8D /* ViewController.swift in Sources */,
+				1812B6D8221707A8003FAF8D /* ConcentrationViewController.swift in Sources */,
 				1812B6D6221707A8003FAF8D /* AppDelegate.swift in Sources */,
 				1812B6EB22194CB9003FAF8D /* Concentration.swift in Sources */,
 				1812B6ED22194DBA003FAF8D /* Card.swift in Sources */,
