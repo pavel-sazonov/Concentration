@@ -18,13 +18,20 @@ class ConcentrationViewController: UIViewController {
     private var emojiThemes = [
         "👻🎃😱👽💀🧟‍♀️🐲👹🤡☠️",
         "😸🐶🐰🦊🐷🐥🐼🦋🐭🐠",
-        "🍏🍐🍊🍋🍌🍉🍇🍓🍒🍑",
         "1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟",
         "АБВГДЕЖЗИКЛМНОПРСТУФХЦШЩЬЪЭЮЯ",
         "😹😻😼😽🙀😿😾🐱😸😺"
     ]
     
     lazy private var emojiChoices: String! = emojiThemes.randomElement()
+    
+    var theme: String? {
+        didSet {
+            emojiChoices = theme ?? ""
+            emoji = [:]
+            updateViewFromModel()
+        }
+    }
     
     private var emoji = [Card: String]()
     
