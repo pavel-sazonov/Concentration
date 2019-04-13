@@ -15,15 +15,7 @@ class ConcentrationViewController: UIViewController {
         return cardButtons.count / 2
     }
     
-    private var emojiThemes = [
-        "👻🎃😱👽💀🧟‍♀️🐲👹🤡☠️",
-        "😸🐶🐰🦊🐷🐥🐼🦋🐭🐠",
-        "1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟",
-        "АБВГДЕЖЗИКЛМНОПРСТУФХЦШЩЬЪЭЮЯ",
-        "😹😻😼😽🙀😿😾🐱😸😺"
-    ]
-    
-    lazy private var emojiChoices: String! = emojiThemes.randomElement()
+    private var emojiChoices = ""
     
     var theme: String? {
         didSet {
@@ -52,7 +44,7 @@ class ConcentrationViewController: UIViewController {
     
     @IBAction private func startNewGame() {
         game.newGame()
-        emojiChoices = emojiThemes.randomElement()
+        emojiChoices = theme ?? ""
         emoji = [:]
         updateViewFromModel()
     }
