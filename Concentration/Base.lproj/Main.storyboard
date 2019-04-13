@@ -349,7 +349,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Halloween"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="I33-5X-Rva"/>
+                                            <action selector="changeTheme:" destination="0Lj-TB-t5P" eventType="touchUpInside" id="jso-EV-QSP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1R-PE-7bW">
@@ -357,7 +357,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Animals"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="Fk0-zx-Kaw"/>
+                                            <action selector="changeTheme:" destination="0Lj-TB-t5P" eventType="touchUpInside" id="f7C-71-fHu"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCb-hX-Kj8">
@@ -365,7 +365,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Letters"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="ntf-8M-gNp"/>
+                                            <action selector="changeTheme:" destination="0Lj-TB-t5P" eventType="touchUpInside" id="69E-z6-OCO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3EO-se-te0">
@@ -373,7 +373,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Numbers"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="5l3-jA-jde"/>
+                                            <action selector="changeTheme:" destination="0Lj-TB-t5P" eventType="touchUpInside" id="Q7Y-H7-OoU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KY-o6-rSC">
@@ -381,7 +381,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Cats"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="8J7-4r-Tol"/>
+                                            <action selector="changeTheme:" destination="0Lj-TB-t5P" eventType="touchUpInside" id="pEL-LF-5wj"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -395,6 +395,9 @@
                         <viewLayoutGuide key="safeArea" id="yYF-2f-zK1"/>
                     </view>
                     <navigationItem key="navigationItem" id="JVd-wP-HaU"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="wlA-nr-QUD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J58-iN-4A5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -420,7 +423,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ydP-71-eyT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nOq-iI-Jwc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
