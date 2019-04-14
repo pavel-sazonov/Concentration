@@ -19,6 +19,10 @@ struct Concentration {
     
     var faceUpCardsIndices: [Int] { return cards.indices.filter { cards[$0].isFaceUp } }
     
+    var faceUpCardsMatched: Bool {
+        return cards.filter { $0.isFaceUp && $0.isMatched }.count == 2
+    }
+    
     mutating func chooseCard(at index: Int) {
         assert(cards.indices.contains(index),
                "Concentration.chooseCard(at: \(index): chossen index not in the cards")

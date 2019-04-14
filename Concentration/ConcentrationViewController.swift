@@ -39,20 +39,54 @@ class ConcentrationViewController: UIViewController {
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
         
-        
-            UIView.transition(with: sender,
+            UIView.transition(with: sender, // flip card face up
                               duration: 0.5,
                               options: [.transitionFlipFromLeft],
                               animations: { self.updateViewFromModel() },
                               completion: { finished in
                                 if self.game.faceUpCardsIndices.count == 2 {
-                                    self.game.faceUpCardsIndices.forEach { index in
-                                        UIView.transition(with: self.cardButtons[index],
-                                                          duration: 0.5,
-                                                          options: [.transitionFlipFromLeft],
-                                                          animations: { self.game.faceDownCards(at: index) })
+                                    if self.game.faceUpCardsMatched {  // scale up matched cards
+                                        UIViewPropertyAnimator.runningPropertyAnimator(
+                                            withDuration: 0.6,
+                                            delay: 0,
+                                            options: [],
+                                            animations: {
+                                                self.game.faceUpCardsIndices.forEach {
+                                                    self.cardButtons[$0].transform =
+                                                        CGAffineTransform.identity.scaledBy(x: 3.0,
+                                                                                            y:  3.0)
+                                                }
+                                        },
+                                            completion: { position in  // scale down matched card and hide
+                                                UIViewPropertyAnimator.runningPropertyAnimator(
+                                                    withDuration: 0.75,
+                                                    delay: 0,
+                                                    options: [],
+                                                    animations: {
+                                                        self.game.faceUpCardsIndices.forEach {
+                                                            self.cardButtons[$0].transform =
+                                                                CGAffineTransform.identity.scaledBy(x: 0.1,
+                                                                                                    y:  0.1)
+                                                            self.cardButtons[$0].alpha = 0
+                                                        }
+                                                },
+                                                    completion: { position in
+                                                        self.game.faceUpCardsIndices.forEach {
+                                                            self.cardButtons[$0].alpha = 1
+                                                            self.cardButtons[$0].transform = .identity
+                                                            self.game.faceDownCards(at: $0)
+                                                        }
+                                                        self.updateViewFromModel()
+                                                })
+                                        })
+                                    } else { // flip face down not matched cards
+                                        self.game.faceUpCardsIndices.forEach { index in
+                                            UIView.transition(with: self.cardButtons[index],
+                                                              duration: 0.5,
+                                                              options: [.transitionFlipFromLeft],
+                                                              animations: { self.updateViewFromModel() })
+                                        }
                                     }
-                                    self.updateViewFromModel()
                                 }
             })
             
