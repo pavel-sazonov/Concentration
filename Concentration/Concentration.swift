@@ -14,19 +14,15 @@ struct Concentration {
     private (set) var flipCount = 0
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
-        get {
-            return cards.indices.filter { cards[$0].isFaceUp }.oneAndOnly
-        }
-        set(newValue) {
-            for index in cards.indices {
-                cards[index].isFaceUp = (index == newValue)
-            }
-            
-        }
+        return cards.indices.filter { cards[$0].isFaceUp }.oneAndOnly
     }
     
+    var faceUpCardsIndices: [Int] { return cards.indices.filter { cards[$0].isFaceUp } }
+    
     mutating func chooseCard(at index: Int) {
-        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index): chossen index not in the cards")
+        assert(cards.indices.contains(index),
+               "Concentration.chooseCard(at: \(index): chossen index not in the cards")
+        
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 if cards[matchIndex] == cards[index] {
@@ -47,10 +43,15 @@ struct Concentration {
                 }
                 cards[index].isFaceUp = true
             } else {
-                indexOfOneAndOnlyFaceUpCard = index
+                cards[index].isFaceUp = true
             }
             flipCount += 1
         }
+        
+    }
+    
+    mutating func faceDownCards(at index: Int) {
+            cards[index].isFaceUp = false
     }
     
     mutating func newGame() {
@@ -65,7 +66,9 @@ struct Concentration {
     }
     
     init(numberOfPairsOfCards: Int) {
-        assert(numberOfPairsOfCards > 0, "Concentration.init(\(numberOfPairsOfCards)): you must have at least one pair of cards")
+        assert(numberOfPairsOfCards > 0,
+               "Concentration.init(\(numberOfPairsOfCards)): you must have at least one pair of cards")
+        
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
