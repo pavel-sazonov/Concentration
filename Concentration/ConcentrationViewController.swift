@@ -38,8 +38,12 @@ class ConcentrationViewController: UIViewController {
     @IBAction private func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
-            updateViewFromModel()
         }
+        
+        UIView.transition(with: sender,
+                          duration: 0.5,
+                          options: [.transitionFlipFromLeft],
+                          animations: { self.updateViewFromModel() })
     }
     
     @IBAction private func startNewGame() {
