@@ -46,6 +46,9 @@ struct Concentration {
                     }
                 }
                 cards[index].isFaceUp = true
+            } else if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex == index {
+                cards[index].isFaceUp = false
+                flipCount -= 1
             } else {
                 cards[index].isFaceUp = true
             }
