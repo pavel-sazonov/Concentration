@@ -44,14 +44,16 @@ class ConcentrationViewController: UIViewController {
                               options: [.transitionFlipFromLeft],
                               animations: { self.updateViewFromModel() },
                               completion: { finished in
-                                if self.game.faceUpCardsIndices.count == 2 {
+                                let cardsIndicesToAnimate = self.game.faceUpCardsIndices
+                                if cardsIndicesToAnimate.count == 2 {
                                     if self.game.faceUpCardsMatched {  // scale up matched cards
                                         UIViewPropertyAnimator.runningPropertyAnimator(
                                             withDuration: Constants.scaleUpDuration,
                                             delay: 0,
                                             options: [],
                                             animations: {
-                                                self.game.faceUpCardsIndices.forEach {
+                                                cardsIndicesToAnimate.forEach {
+                                                    self.game.faceDownCards(at: $0)
                                                     self.cardButtons[$0].transform =
                                                         CGAffineTransform.identity.scaledBy(x: Constants.scaleUpSize,
                                                                                             y:  Constants.scaleUpSize)
@@ -63,7 +65,7 @@ class ConcentrationViewController: UIViewController {
                                                     delay: 0,
                                                     options: [],
                                                     animations: {
-                                                        self.game.faceUpCardsIndices.forEach {
+                                                        cardsIndicesToAnimate.forEach {
                                                             self.cardButtons[$0].transform =
                                                                 CGAffineTransform.identity.scaledBy(x: Constants.scaleDownSize,
                                                                                                     y:  Constants.scaleDownSize)
@@ -71,16 +73,15 @@ class ConcentrationViewController: UIViewController {
                                                         }
                                                 },
                                                     completion: { position in // back card setting
-                                                        self.game.faceUpCardsIndices.forEach {
+                                                        cardsIndicesToAnimate.forEach {
                                                             self.cardButtons[$0].alpha = 1
                                                             self.cardButtons[$0].transform = .identity
-                                                            self.game.faceDownCards(at: $0)
                                                         }
                                                         self.updateViewFromModel()
                                                 })
                                         })
                                     } else { // flip face down not matched cards
-                                        self.game.faceUpCardsIndices.forEach { index in
+                                        cardsIndicesToAnimate.forEach { index in
                                             UIView.transition(with: self.cardButtons[index],
                                                               duration: Constants.flipDuration,
                                                               options: [.transitionFlipFromLeft],
