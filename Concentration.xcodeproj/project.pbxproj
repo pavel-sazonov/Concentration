@@ -12,8 +12,8 @@
 		1812B6DB221707A8003FAF8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1812B6D9221707A8003FAF8D /* Main.storyboard */; };
 		1812B6DD221707AC003FAF8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1812B6DC221707AC003FAF8D /* Assets.xcassets */; };
 		1812B6E0221707AC003FAF8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1812B6DE221707AC003FAF8D /* LaunchScreen.storyboard */; };
-		1812B6EB22194CB9003FAF8D /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B6EA22194CB9003FAF8D /* Concentration.swift */; };
-		1812B6ED22194DBA003FAF8D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B6EC22194DBA003FAF8D /* Card.swift */; };
+		1812B6EB22194CB9003FAF8D /* ConcentrationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B6EA22194CB9003FAF8D /* ConcentrationGame.swift */; };
+		1812B6ED22194DBA003FAF8D /* ConcentrationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812B6EC22194DBA003FAF8D /* ConcentrationCard.swift */; };
 		181D1B8322619DBB00A59DC3 /* ConcentrationThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D1B8222619DBB00A59DC3 /* ConcentrationThemeChooserViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 		1812B6DC221707AC003FAF8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1812B6DF221707AC003FAF8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1812B6E1221707AC003FAF8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1812B6EA22194CB9003FAF8D /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
-		1812B6EC22194DBA003FAF8D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		1812B6EA22194CB9003FAF8D /* ConcentrationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationGame.swift; sourceTree = "<group>"; };
+		1812B6EC22194DBA003FAF8D /* ConcentrationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationCard.swift; sourceTree = "<group>"; };
 		181D1B8222619DBB00A59DC3 /* ConcentrationThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationThemeChooserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,8 +62,7 @@
 			children = (
 				1812B6D7221707A8003FAF8D /* ConcentrationViewController.swift */,
 				181D1B8222619DBB00A59DC3 /* ConcentrationThemeChooserViewController.swift */,
-				1812B6EA22194CB9003FAF8D /* Concentration.swift */,
-				1812B6EC22194DBA003FAF8D /* Card.swift */,
+				18B74F3822687B3E004C8780 /* Model */,
 				1812B6D9221707A8003FAF8D /* Main.storyboard */,
 				1812B6E1221707AC003FAF8D /* Info.plist */,
 				1812B6E722170DF2003FAF8D /* Supporting Files */,
@@ -79,6 +78,15 @@
 				1812B6DE221707AC003FAF8D /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18B74F3822687B3E004C8780 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1812B6EA22194CB9003FAF8D /* ConcentrationGame.swift */,
+				1812B6EC22194DBA003FAF8D /* ConcentrationCard.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +164,8 @@
 				181D1B8322619DBB00A59DC3 /* ConcentrationThemeChooserViewController.swift in Sources */,
 				1812B6D8221707A8003FAF8D /* ConcentrationViewController.swift in Sources */,
 				1812B6D6221707A8003FAF8D /* AppDelegate.swift in Sources */,
-				1812B6EB22194CB9003FAF8D /* Concentration.swift in Sources */,
-				1812B6ED22194DBA003FAF8D /* Card.swift in Sources */,
+				1812B6EB22194CB9003FAF8D /* ConcentrationGame.swift in Sources */,
+				1812B6ED22194DBA003FAF8D /* ConcentrationCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

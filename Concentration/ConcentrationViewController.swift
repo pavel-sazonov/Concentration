@@ -9,7 +9,7 @@
 import UIKit
 
 class ConcentrationViewController: UIViewController {
-    private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    private lazy var game = ConcentrationGame(numberOfPairsOfCards: numberOfPairsOfCards)
     
     var numberOfPairsOfCards: Int {
         return cardButtons.count / 2
@@ -25,7 +25,7 @@ class ConcentrationViewController: UIViewController {
         }
     }
     
-    private var emoji = [Card: String]()
+    private var emoji = [ConcentrationCard: String]()
     
     @IBOutlet private weak var flipCountLabel: UILabel! {
          didSet { updateFlipCountLabel() }
@@ -130,7 +130,7 @@ class ConcentrationViewController: UIViewController {
         }
     }
     
-    private func emoji(for card: Card) -> String {
+    private func emoji(for card: ConcentrationCard) -> String {
         if emoji[card] == nil, emojiChoices.count > 0 {
             let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4Random)
             emoji[card] = String(emojiChoices.remove(at: randomStringIndex))

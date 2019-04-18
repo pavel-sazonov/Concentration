@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Concentration {
-    private (set) var cards = [Card]()
+struct ConcentrationGame {
+    private (set) var cards = [ConcentrationCard]()
     private (set) var score = 0
     private (set) var flipCount = 0
     
@@ -77,7 +77,7 @@ struct Concentration {
                "Concentration.init(\(numberOfPairsOfCards)): you must have at least one pair of cards")
         
         for _ in 1...numberOfPairsOfCards {
-            let card = Card()
+            let card = ConcentrationCard()
             cards += [card, card]
         }
         
