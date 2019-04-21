@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ConcentrationThemeChooserViewController: VCLLoggingViewController, UISplitViewControllerDelegate {
+class ConcentrationThemeChooserViewController: UIViewController, UISplitViewControllerDelegate {
     
-    override var vclLoggingName: String {
-        return "ThemeChooser"
-    }
+//    override var vclLoggingName: String {
+//        return "ThemeChooser"
+//    }
     
     let themes = [
         "Halloween": "👻🎃😱👽💀🧟‍♀️🐲👹🤡☠️",
@@ -68,5 +68,4 @@ class ConcentrationThemeChooserViewController: VCLLoggingViewController, UISplit
             }
         }
     }
-
 }
