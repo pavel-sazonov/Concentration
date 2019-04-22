@@ -16,7 +16,7 @@ class ConcentrationViewController: UIViewController {
 //    }
     
     var numberOfPairsOfCards: Int {
-        return cardButtons.count / 2
+        return visibleCardButtons.count / 2
     }
     
     private var emojiChoices = "👻🎃😱👽💀🧟‍♀️🐲👹🤡☠️"
@@ -39,8 +39,17 @@ class ConcentrationViewController: UIViewController {
     
     @IBOutlet private var cardButtons: [UIButton]!
     
+    private var visibleCardButtons: [UIButton]! {
+        return cardButtons?.filter { !$0.superview!.isHidden }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateViewFromModel()
+    }
+    
     @IBAction private func touchCard(_ sender: UIButton) {
-        if let cardNumber = cardButtons.index(of: sender) {
+        if let cardNumber = visibleCardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             
             UIView.transition(with: sender, // flip card face up
@@ -58,7 +67,7 @@ class ConcentrationViewController: UIViewController {
                                             animations: {
                                                 cardsIndicesToAnimate.forEach {
                                                     self.game.faceDownCards(at: $0)
-                                                    self.cardButtons[$0].transform =
+                                                    self.visibleCardButtons[$0].transform =
                                                         CGAffineTransform.identity.scaledBy(x: Constants.scaleUpSize,
                                                                                             y:  Constants.scaleUpSize)
                                                 }
@@ -70,23 +79,23 @@ class ConcentrationViewController: UIViewController {
                                                     options: [],
                                                     animations: {
                                                         cardsIndicesToAnimate.forEach {
-                                                            self.cardButtons[$0].transform =
+                                                            self.visibleCardButtons[$0].transform =
                                                                 CGAffineTransform.identity.scaledBy(x: Constants.scaleDownSize,
                                                                                                     y:  Constants.scaleDownSize)
-                                                            self.cardButtons[$0].alpha = 0
+                                                            self.visibleCardButtons[$0].alpha = 0
                                                         }
                                                 },
                                                     completion: { position in // back card setting
                                                         cardsIndicesToAnimate.forEach {
-                                                            self.cardButtons[$0].alpha = 1
-                                                            self.cardButtons[$0].transform = .identity
+                                                            self.visibleCardButtons[$0].alpha = 1
+                                                            self.visibleCardButtons[$0].transform = .identity
                                                         }
                                                         self.updateViewFromModel()
                                                 })
                                         })
                                     } else { // flip face down not matched cards
                                         cardsIndicesToAnimate.forEach { index in
-                                            UIView.transition(with: self.cardButtons[index],
+                                            UIView.transition(with: self.visibleCardButtons[index],
                                                               duration: Constants.flipDuration,
                                                               options: [.transitionFlipFromLeft],
                                                               animations: { self.game.faceDownCards(at: index) })
@@ -116,9 +125,9 @@ class ConcentrationViewController: UIViewController {
     }
     
     private func updateViewFromModel() {
-        if cardButtons != nil {
-            for index in cardButtons.indices {
-                let button = cardButtons[index]
+        if visibleCardButtons != nil {
+            for index in visibleCardButtons.indices {
+                let button = visibleCardButtons[index]
                 let card = game.cards[index]
                 
                 if card.isFaceUp {
