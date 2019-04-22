@@ -48,6 +48,11 @@ class ConcentrationViewController: UIViewController {
         updateViewFromModel()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateFlipCountLabel()
+    }
+    
     @IBAction private func touchCard(_ sender: UIButton) {
         if let cardNumber = visibleCardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
@@ -119,7 +124,11 @@ class ConcentrationViewController: UIViewController {
             .strokeWidth: 5.0,
             .strokeColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         ]
-        let attributedString = NSAttributedString(string: "Flips: \(game.flipCount)", attributes: attributes)
+        let attributedString = NSAttributedString(
+            string: traitCollection.verticalSizeClass == .compact ? "Flips:\n\(game.flipCount)" :
+            "Flips: \(game.flipCount)",
+            attributes: attributes
+        )
         
         flipCountLabel.attributedText = attributedString
     }
